@@ -15,6 +15,15 @@ app.use(express.static(publicPath));
   io.on('connection', (socket) => {
    console.log('new user connected');
 
+  socket.emit('newMessage', {
+     from: 'parul',
+     text: 'see uh then',
+     createdAt: 123123
+});
+  socket.on('createMessage', (message) => {
+      console.log('createMessage', message);
+   });
+
    socket.on('disconnect', () =>{
         console.log('user was disconnected');
     });
